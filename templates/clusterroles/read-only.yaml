@@ -1,0 +1,19 @@
+# This file provides readonly access to cluster scoped resources typically needed by any user.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: authenticated-read-only
+rules:
+- apiGroups: [""]
+  verbs: ["get", "list", "watch"]
+  resources: 
+    - nodes
+    - namespaces
+- apiGroups: ["storage.k8s.io"]
+  verbs: ["get", "list", "watch"]
+  resources: 
+    - storageclasses
+- apiGroups: ["networking.k8s.io"]
+  verbs: ["get", "list", "watch"]
+  resources: 
+    - ingressclasses
